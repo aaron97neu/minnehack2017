@@ -38,12 +38,12 @@ public class GrandmaDownSpeechlet implements Speechlet
 				String[] split = line.split(":");
 				String intent = split[0];
 				String function = split[1];
-				
+
 				Method intentMethod = intentHandler.getClass().getMethod(function, Intent.class, Session.class);
 				intentCaller.put(intent, intentMethod);
 			}
 			reader.close();
-		} 
+		}
 		catch (IOException | NoSuchMethodException | SecurityException e)
 		{
 			e.printStackTrace();
@@ -51,30 +51,30 @@ public class GrandmaDownSpeechlet implements Speechlet
 	}
 
 	@Override
-	public SpeechletResponse onLaunch(LaunchRequest request, Session session) throws SpeechletException 
+	public SpeechletResponse onLaunch(LaunchRequest request, Session session) throws SpeechletException
 	{
 		return null;
 	}
 
 	@Override
-	public SpeechletResponse onIntent(IntentRequest request, Session session) throws SpeechletException 
+	public SpeechletResponse onIntent(IntentRequest request, Session session) throws SpeechletException
 	{
 		Intent intent = request.getIntent();
 		Method intentMethod = intentCaller.get(intent.getName());
-		
-		try 
+
+		try
 		{
 			return (SpeechletResponse) intentMethod.invoke(request, session);
-		} 
+		}
 		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {}
-		
+
 		return null;
 	}
 
 	@Override
-	public void onSessionEnded(SessionEndedRequest request, Session session) throws SpeechletException 
+	public void onSessionEnded(SessionEndedRequest request, Session session) throws SpeechletException
 	{
-		
+
 	}
 
 }

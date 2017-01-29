@@ -2,7 +2,6 @@ package com.nebby.grandmadown;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import com.amazon.speech.speechlet.lambda.SpeechletRequestStreamHandler;
 
 public class GrandmaDownSpeechletHandler extends SpeechletRequestStreamHandler 

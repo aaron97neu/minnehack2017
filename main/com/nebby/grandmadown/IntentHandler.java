@@ -15,7 +15,7 @@ public class IntentHandler
 		output.text("This is the add Pill output");
 		
 		SpeechOutput reprompt = new SpeechOutput();
-		output.text("This is the add Pill repromt");
+		output.text("This is the add Pill reprompt");
 		
 		return newAskResponse(output.toString(), reprompt.toString());
 	}
