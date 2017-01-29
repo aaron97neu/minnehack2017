@@ -3,3 +3,4 @@ NamePill:namePill:Name the pill after adding it
 TimePill:timePill:Set the dosage after adding it
 TakePills:takePills:Indicates that the user has taken the pills requested for them to take.
 PillsTaken:pillsTaken:Queries what pills will the user have to take next.
+Clear:clear:clear all of the new pills

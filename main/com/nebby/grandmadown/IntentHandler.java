@@ -68,6 +68,10 @@ public class IntentHandler
 		return newTellResponse(output.toString());
 	}
 
+	public clear() {
+
+	}
+
 	public SpeechletResponse newTellResponse(String output) {
 		SsmlOutputSpeech outputSpeech = new SsmlOutputSpeech();
 		outputSpeech.setSsml(output);

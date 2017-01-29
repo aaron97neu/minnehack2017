@@ -27,6 +27,9 @@
     {
       "intent": "PillsTaken"
     },
+      {
+        "intent": "Clear"
+      },
     {
       "intent": "AMAZON.HelpIntent"
     },
