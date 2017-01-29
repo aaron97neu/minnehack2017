@@ -1,15 +1,8 @@
 package com.nebby.grandmadown;
 
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.amazon.speech.slu.Intent;
 import com.amazon.speech.speechlet.IntentRequest;
@@ -118,11 +111,7 @@ public class GrandmaDownSpeechlet implements Speechlet
 	{
 		SpeechOutput output = new SpeechOutput();
 		output.text("Welcome to your personal healthcare provider");
-
-		SpeechOutput reprompt = new SpeechOutput();
-		reprompt.text("Error occured");
-
-		return intentHandler.newAskResponse(output.toString(), reprompt.toString());
-	}
+        return intentHandler.newTellResponse(output.toString());
+    }
 
 }

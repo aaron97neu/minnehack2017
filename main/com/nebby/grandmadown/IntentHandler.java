@@ -10,7 +10,7 @@ public class IntentHandler
 {
 	public SpeechletResponse addPill(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
-		output.text("Okay, I will add it to your list of medication");
+		output.text("Okay, I will add it to your list of medication. What type of medication is it");
 
 		SpeechOutput reprompt = new SpeechOutput();
 		reprompt.text("What type of medication is it");
@@ -20,17 +20,17 @@ public class IntentHandler
 
 	public SpeechletResponse namePill(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
-		output.text("Okay, I've update your medication list");
+		output.text("Okay, I've update your medication list. What time would you like to take it");
 
 		SpeechOutput reprompt = new SpeechOutput();
-		reprompt.text("How often do you need to take it");
+		reprompt.text("What time would you like to take it");
 
 		return newAskResponse(output.toString(), reprompt.toString());
 	}
 
 	public SpeechletResponse timePill(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
-		output.text("Okay, I've set your dosage time");
+		output.text("I will do my best to remind you");
 
 		return newTellResponse(output.toString());
 	}
