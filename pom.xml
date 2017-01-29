@@ -125,6 +125,11 @@
     <profile>
       <id>publishing</id>
       <build>
+        <resources>
+          <resource>
+            <directory>main</directory>
+          </resource>
+        </resources>
         <plugins>
           <plugin>
             <artifactId>maven-gpg-plugin</artifactId>
