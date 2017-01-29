@@ -1,15 +1,13 @@
 {
 	"intents": [
 	{
-		"intent": "AddPill",
-		"slots": [
-		{
-			"name": "Name"
-		},
-		{
-			"name": "Dosage"
-		}
-		]
+    "intent": "AddPill",
+    "slots": [
+      {
+        "name": "Name",
+        "type": "LIST_OF_NAMES"
+      }
+    ]
 	},
 	{
     "intent": "TakePills",
@@ -20,8 +18,17 @@
       }
     ]
 	},
-	{
-		"intent": "PillsTaken"
-	}
+    {
+      "intent": "PillsTaken"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
 	]
 }
