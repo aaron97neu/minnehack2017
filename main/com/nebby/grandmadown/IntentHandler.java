@@ -8,14 +8,17 @@ import com.amazon.speech.ui.SsmlOutputSpeech;
 
 public class IntentHandler 
 {
-
 	public SpeechletResponse addPill(Intent intent, Session session)
 	{
 		SpeechOutput output = new SpeechOutput();
 		output.text("Okay, I will add it to your list of medication");
-		
+
 		SpeechOutput reprompt = new SpeechOutput();
-		reprompt.text("What is the name of the medication?");
+		reprompt.text("What time everyday should you take it");
+
+		if (intent.getSlot("Name") == null) {
+			reprompt.text("What is the name of the medication");
+		}
 		
 		return newAskResponse(output.toString(), reprompt.toString());
 	}
