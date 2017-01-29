@@ -11,7 +11,12 @@ public class IntentHandler
 
 	public SpeechletResponse addPill(Intent intent, Session session)
 	{
-		return null;
+		SpeechOutput output = new SpeechOutput();
+		output.text("This is the add Pill output");
+		
+		
+		
+		return newAskResponse(output.toString(), reprompt.toString());
 	}
 
 	public SpeechletResponse newAskResponse(String output, String reprompt)
