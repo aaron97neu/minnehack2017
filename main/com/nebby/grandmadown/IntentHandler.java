@@ -152,9 +152,8 @@ public class IntentHandler
 		return newTellResponse(output.toString());
 	}
 
-	public SpeechletResponse checkup(Intent intent, Session session) {
+	public SpeechletResponse checkup (Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
-		output.text("");
 		try
 		{
 			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/clear";
