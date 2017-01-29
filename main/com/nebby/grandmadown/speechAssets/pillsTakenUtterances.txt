@@ -1,8 +1,0 @@
-PillsTaken What have I taken
-PillsTaken What pills have I taken
-PillsTaken Did I take my pills
-PillsTaken Did I take pills
-PillsTaken Did I take my meds
-PillsTaken Did I take my medicine
-PillsTaken Did I take my drugs
-PillsTaken Did I take my prescription
