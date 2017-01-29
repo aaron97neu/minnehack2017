@@ -54,17 +54,17 @@ public class GrandmaDownSpeechlet implements Speechlet
 		catch (IOException | NoSuchMethodException | SecurityException e)
 		{
 			e.printStackTrace();
-		}
+		}*/
 		
 		network = new ClientNetwork();
 		try
 		{
-			network.connect("", 8888);
+			network.connect("ec2-54-172-226-18.compute-1.amazonaws.com", 8080);
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
-		}*/
+		}
 	}
 
 	@Override

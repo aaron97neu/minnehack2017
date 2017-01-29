@@ -1,0 +1,28 @@
+package com.nebby.grandmadown;
+
+import java.io.IOException;
+
+import com.nebby.grandmadown.network.ClientNetwork;
+
+public class Main 
+{
+	
+	public static void main(String[] args) throws IOException
+	{
+		ClientNetwork network = new ClientNetwork();
+		try
+		{
+			network.connect("localhost", 8080);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		network.update();
+		
+		network.validate(true);
+		System.out.println("SECURED!");
+	}
+
+}

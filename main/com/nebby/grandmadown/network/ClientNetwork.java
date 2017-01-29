@@ -68,4 +68,9 @@ public class ClientNetwork extends Network
 		}
 	}
 
+	public void queryPills(Network network, String[] pillNames)
+	{
+		
+	}
+
 }
