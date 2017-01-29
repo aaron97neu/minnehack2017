@@ -122,8 +122,26 @@ public class IntentHandler
 		return newTellResponse(output.toString());
 	}
 
-	public clear() {
+	public SpeechletResponse clear(Intent intent, Session session)
+	{
+		SpeechOutput output = new SpeechOutput();
+		try
+		{
+			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/clear";
 
+			HttpClient client = HttpClientBuilder.create().build();
+			HttpGet request = new HttpGet(url);
+
+
+			HttpResponse res = client.execute(request);
+			
+			output.text("Cleared!");
+		}
+		catch(Exception e)
+		{
+			output.text("I'm sorry, I couldn't get your information to the cloud.");
+		}
+		return newTellResponse(output.toString());
 	}
 
 	public SpeechletResponse newTellResponse(String output) {
