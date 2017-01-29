@@ -156,7 +156,7 @@ public class IntentHandler
 		SpeechOutput output = new SpeechOutput();
 		try
 		{
-			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/clear";
+			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/checkup";
 
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpGet request = new HttpGet(url);
