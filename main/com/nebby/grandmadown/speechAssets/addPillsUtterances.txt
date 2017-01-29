@@ -1,0 +1,21 @@
+PillIntent add a new prescription
+PillIntent add a prescription
+PillIntent add a new pill
+PillIntent add a pill
+PillIntent add new meds
+PillIntent add new medicine
+PillIntent add a new drug
+PillIntent got a new prescription
+PillIntent got a prescription
+PillIntent got a new pill
+PillIntent got a pill
+PillIntent got new meds
+PillIntent got new medicine
+PillIntent got a new drug
+PillIntent have a new prescription
+PillIntent have a prescription
+PillIntent have a new pill
+PillIntent have a pill
+PillIntent have new meds
+PillIntent have new medicine
+PillIntent have a new drug

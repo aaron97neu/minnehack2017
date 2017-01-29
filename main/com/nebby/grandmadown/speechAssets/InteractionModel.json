@@ -1,0 +1,27 @@
+{
+	"intents": [
+	{
+		"intent": "AddPill",
+		"slots": [
+		{
+			"name": "Name"
+		},
+		{
+			"name": "Dosage"
+		}
+		]
+	},
+	{
+    "intent": "TakePills",
+    "slots": [
+      {
+        "name": "Name",
+        "type": "LIST_OF_NAMES"
+      }
+    ]
+	},
+	{
+		"intent": "PillsTaken"
+	}
+	]
+}
