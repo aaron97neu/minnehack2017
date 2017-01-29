@@ -101,13 +101,14 @@ public class GrandmaDownSpeechlet implements Speechlet
 			return intentHandler.pillsTaken(intent, session);
 		}
 
-		return null;
+		throw new SpeechletException("Invalid Intent");
 	}
 
 	@Override
 	public void onSessionEnded(SessionEndedRequest request, Session session) throws SpeechletException
 	{
-
+		log.info("onSessionEnded requestId={}, sessionId={}", request.getRequestId(),
+                session.getSessionId());
 	}
 	
 	private SpeechletResponse getWelcomeResponse() 

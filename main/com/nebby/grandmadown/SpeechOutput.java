@@ -120,7 +120,7 @@ public class SpeechOutput
 	 */
 	public String toString()
 	{
-		return "<speak>" + speechOutput.toString() + "</speech>";
+		return "<speak>" + speechOutput.toString() + "</speak>";
 	}
 	
 	public static enum Strength
