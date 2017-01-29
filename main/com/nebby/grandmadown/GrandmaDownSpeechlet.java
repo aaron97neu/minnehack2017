@@ -4,9 +4,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.amazon.speech.slu.Intent;
 import com.amazon.speech.speechlet.IntentRequest;
 import com.amazon.speech.speechlet.LaunchRequest;
@@ -16,11 +13,11 @@ import com.amazon.speech.speechlet.SessionStartedRequest;
 import com.amazon.speech.speechlet.Speechlet;
 import com.amazon.speech.speechlet.SpeechletException;
 import com.amazon.speech.speechlet.SpeechletResponse;
+import com.amazon.speech.ui.PlainTextOutputSpeech;
 import com.nebby.grandmadown.network.ClientNetwork;
 
 public class GrandmaDownSpeechlet implements Speechlet 
 {
-	private static final Logger log = LoggerFactory.getLogger(GrandmaDownSpeechlet.class);
 	
 	private Map<String, Method> intentCaller = new HashMap<String, Method>();
 	private IntentHandler intentHandler = null;
@@ -30,29 +27,8 @@ public class GrandmaDownSpeechlet implements Speechlet
 	public void onSessionStarted(SessionStartedRequest request, Session session) throws SpeechletException 
 	{
 		intentHandler = new IntentHandler();
-		log.error("onSessionStarted requestId={}, sessionId={}", request.getRequestId(),
-                session.getSessionId());
-		System.out.println("this");
-		/*try 
-		{
-			BufferedReader reader = new BufferedReader(new FileReader("com/nebby/grandmadown/speechAssets/IntentFunctions.txt"));
-			String line = null;
-			while((line = reader.readLine()) != null)
-			{
-				String[] split = line.split(":");
-				String intent = split[0];
-				String function = split[1];
-
-				Method intentMethod = intentHandler.getClass().getMethod(function, Intent.class, Session.class);
-				intentCaller.put(intent, intentMethod);
-			}
-			reader.close();
-		}
-		catch (IOException | NoSuchMethodException | SecurityException e)
-		{
-			e.printStackTrace();
-		}
-		
+		System.out.println("started session");
+		/*
 		network = new ClientNetwork();
 		try
 		{
@@ -63,15 +39,16 @@ public class GrandmaDownSpeechlet implements Speechlet
 			e.printStackTrace();
 		}
 		
+		System.out.println("CONNECTED");
 		network.update();
-		network.validate(false);*/
+		network.validate(true);
+		System.out.println("SECURED");*/
 	}
 
 	@Override
 	public SpeechletResponse onLaunch(LaunchRequest request, Session session) throws SpeechletException
 	{
-		log.error("onLaunch requestId={}, sessionId={}", request.getRequestId(),
-                session.getSessionId());
+		System.out.println("Launched");
 
         return getWelcomeResponse();
 	}
@@ -80,14 +57,8 @@ public class GrandmaDownSpeechlet implements Speechlet
 	public SpeechletResponse onIntent(IntentRequest request, Session session) throws SpeechletException
 	{
 		Intent intent = request.getIntent();
-		/*Method intentMethod = intentCaller.get(intent.getName());
-
-		try
-		{
-			return (SpeechletResponse) intentMethod.invoke(request, session);
-		}
-		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {}*/
 		
+		System.out.println(intent.getName());
 		if(intent.getName().equals("AddPill"))
 		{
 			return intentHandler.addPill(intent, session);
@@ -100,15 +71,30 @@ public class GrandmaDownSpeechlet implements Speechlet
 		{
 			return intentHandler.pillsTaken(intent, session);
 		}
+		else if ("AMAZON.StopIntent".equals(intent.getName())) 
+		{
+            PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
+            outputSpeech.setText("Goodbye");
 
-		throw new SpeechletException("Invalid Intent");
+            return SpeechletResponse.newTellResponse(outputSpeech);
+        }
+		else if ("AMAZON.CancelIntent".equals(intent.getName()))
+		{
+            PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
+            outputSpeech.setText("Goodbye");
+
+            return SpeechletResponse.newTellResponse(outputSpeech);
+        }
+        else
+        {
+            throw new SpeechletException("Invalid Intent");
+        }
 	}
 
 	@Override
 	public void onSessionEnded(SessionEndedRequest request, Session session) throws SpeechletException
 	{
-		log.error("onSessionEnded requestId={}, sessionId={}", request.getRequestId(),
-                session.getSessionId());
+		System.out.println("ended");
 	}
 	
 	private SpeechletResponse getWelcomeResponse() 
