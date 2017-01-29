@@ -152,6 +152,27 @@ public class IntentHandler
 		return newTellResponse(output.toString());
 	}
 
+	public SpeachletResponse checkup(Intent intent, Session session) {
+		SpeechOutput output = new SpeechOutput();
+		try
+		{
+			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/clear";
+
+			HttpClient client = HttpClientBuilder.create().build();
+			HttpGet request = new HttpGet(url);
+
+
+			HttpResponse res = client.execute(request);
+
+			output.text("Checkup Started!");
+		}
+		catch(Exception e)
+		{
+			output.text("I'm sorry, we couldn't connect but I am sure everything is fine");
+		}
+		return newTellResponse(output.toString());
+	}
+
 	public SpeechletResponse newTellResponse(String output) {
 		SsmlOutputSpeech outputSpeech = new SsmlOutputSpeech();
 		outputSpeech.setSsml(output);

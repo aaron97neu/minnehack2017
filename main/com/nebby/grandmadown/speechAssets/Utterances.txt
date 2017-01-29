@@ -50,3 +50,7 @@ TakePills took my meds
 TakePills took my medicine
 TakePills took my drugs
 Clear clear
+Checkup checkup on {Person}
+Checkup checkup on my {Person}
+Checkup check on {Person}
+Checkup check on my {Person}
