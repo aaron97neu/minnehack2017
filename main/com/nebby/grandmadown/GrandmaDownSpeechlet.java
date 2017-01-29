@@ -1,7 +1,6 @@
 package com.nebby.grandmadown;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -18,12 +17,14 @@ import com.amazon.speech.speechlet.SessionStartedRequest;
 import com.amazon.speech.speechlet.Speechlet;
 import com.amazon.speech.speechlet.SpeechletException;
 import com.amazon.speech.speechlet.SpeechletResponse;
+import com.nebby.grandmadown.network.ClientNetwork;
 
 public class GrandmaDownSpeechlet implements Speechlet 
 {
 
 	private Map<String, Method> intentCaller = new HashMap<String, Method>();
 	private IntentHandler intentHandler = null;
+	private ClientNetwork network = null;
 	
 	@Override
 	public void onSessionStarted(SessionStartedRequest request, Session session) throws SpeechletException 
@@ -45,6 +46,16 @@ public class GrandmaDownSpeechlet implements Speechlet
 			reader.close();
 		} 
 		catch (IOException | NoSuchMethodException | SecurityException e)
+		{
+			e.printStackTrace();
+		}
+		
+		network = new ClientNetwork();
+		try
+		{
+			network.connect("", 8888);
+		}
+		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
