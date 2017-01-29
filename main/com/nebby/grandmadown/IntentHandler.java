@@ -103,7 +103,6 @@ public class IntentHandler
 			output.text("I'm sorry, I couldn't get your information to the cloud. Please repeat.");
 		}
 		
-		SpeechOutput output = new SpeechOutput();
 		try
 		{
 			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/clear";
@@ -140,9 +139,11 @@ public class IntentHandler
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
 			
 			if(response.length() > 0)
-				output.text(response);
+			{
+				output.text("You still need to take " + response);
+			}
 			else
-				output.text("You have taken no pills today.");
+				output.text("You have taken all the pills today.");
 		}
 		catch(Exception e)
 		{
