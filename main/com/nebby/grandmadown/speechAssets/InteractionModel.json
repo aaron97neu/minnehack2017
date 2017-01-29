@@ -1,43 +1,31 @@
 {
 	"intents": [
 	{
-    "intent": "AddPill",
+      "intent": "AddPill"
+    },
+    {
+      "intent": "NamePill",
       "slots": [
         {
           "name": "Name",
           "type": "LIST_OF_NAMES"
-        },
-        {
-          "name": "Time",
-          "type": "AMAZON.TIME"
         }
       ]
-	},
+    },
+      {
+        "intent": "TimePill",
+        "slots": [
+          {
+            "name": "Time",
+            "type": "AMAZON.TIME"
+          }
+        ]
+      },
 	{
-    "intent": "TakePills",
-      "slots": [
-        {
-          "name": "Name",
-          "type": "LIST_OF_NAMES"
-        },
-        {
-          "name": "Time",
-          "type": "AMAZON.TIME"
-        }
-      ]
+    "intent": "TakePills"
 	},
     {
-      "intent": "PillsTaken",
-      "slots": [
-        {
-          "name": "Name",
-          "type": "LIST_OF_NAMES"
-        },
-        {
-          "name": "Time",
-          "type": "AMAZON.TIME"
-        }
-      ]
+      "intent": "PillsTaken"
     },
     {
       "intent": "AMAZON.HelpIntent"
