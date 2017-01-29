@@ -143,7 +143,7 @@ public class IntentHandler
 
 			HttpResponse res = client.execute(request);
 			
-			output.text("Cleared!");
+			output.text("Cleared");
 		}
 		catch(Exception e)
 		{
@@ -152,8 +152,9 @@ public class IntentHandler
 		return newTellResponse(output.toString());
 	}
 
-	public SpeachletResponse checkup(Intent intent, Session session) {
+	public SpeechletResponse checkup(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
+		output.text("");
 		try
 		{
 			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/clear";
