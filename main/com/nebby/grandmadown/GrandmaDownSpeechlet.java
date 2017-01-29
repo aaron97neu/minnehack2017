@@ -88,6 +88,7 @@ public class GrandmaDownSpeechlet implements Speechlet
 		}
 		else
 		{
+			System.out.println(intent.getName());
 			throw new SpeechletException("Invalid Intent");
 		}
 	}
