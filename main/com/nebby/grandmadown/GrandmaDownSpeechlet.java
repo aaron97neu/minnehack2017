@@ -35,7 +35,7 @@ public class GrandmaDownSpeechlet implements Speechlet
 			String line = null;
 			while((line = reader.readLine()) != null)
 			{
-				String[] split = line.split("%20%");
+				String[] split = line.split(":");
 				String intent = split[0];
 				String function = split[1];
 				

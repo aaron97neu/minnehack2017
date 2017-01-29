@@ -1,3 +1,3 @@
-AddPillIntent addPill
-RemovePillIntent removePill
-SettingsIntent settings
+AddPill:addPill:Add Pill to the current list of pills the user needs to take, needs NAME + DOSAGE.
+TakePills:takePills:Indicates that the user has taken the pills requested for them to take.
+PillsTaken:pillsTaken:Queries what pills will the user have to take next.
