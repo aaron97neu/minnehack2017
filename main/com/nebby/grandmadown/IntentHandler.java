@@ -7,11 +7,11 @@ import com.amazon.speech.ui.Reprompt;
 import com.amazon.speech.ui.SsmlOutputSpeech;
 
 public class IntentHandler 
-{
+{  
 	public SpeechletResponse addPill(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
 		output.text("Okay, I will add it to your list of medication. What type of medication is it");
-
+		
 		SpeechOutput reprompt = new SpeechOutput();
 		reprompt.text("What type of medication is it");
 
