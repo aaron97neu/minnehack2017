@@ -30,7 +30,7 @@ public class GrandmaDownSpeechlet implements Speechlet
 	public void onSessionStarted(SessionStartedRequest request, Session session) throws SpeechletException 
 	{
 		intentHandler = new IntentHandler();
-		try 
+		/*try 
 		{
 			BufferedReader reader = new BufferedReader(new FileReader("com/nebby/grandmadown/speechAssets/IntentFunctions.txt"));
 			String line = null;
@@ -58,7 +58,7 @@ public class GrandmaDownSpeechlet implements Speechlet
 		catch (IOException e)
 		{
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	@Override
@@ -71,13 +71,26 @@ public class GrandmaDownSpeechlet implements Speechlet
 	public SpeechletResponse onIntent(IntentRequest request, Session session) throws SpeechletException
 	{
 		Intent intent = request.getIntent();
-		Method intentMethod = intentCaller.get(intent.getName());
+		/*Method intentMethod = intentCaller.get(intent.getName());
 
 		try
 		{
 			return (SpeechletResponse) intentMethod.invoke(request, session);
 		}
-		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {}
+		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {}*/
+		
+		if(intent.getName().equals("AddPill"))
+		{
+			return intentHandler.addPill(intent, session);
+		}
+		else if(intent.getName().equals("TakePills"))
+		{
+			return intentHandler.takePills(intent, session);
+		}
+		else if(intent.getName().equals("PillsTaken"))
+		{
+			return intentHandler.pillsTaken(intent, session);
+		}
 
 		return null;
 	}
