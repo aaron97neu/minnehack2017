@@ -30,7 +30,7 @@ public class IntentHandler
 
 	public SpeechletResponse timePill(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
-		output.text("Okay, I've set your dosage time");
+		output.text("Okay, what time would you like to take it");
 
 		return newTellResponse(output.toString());
 	}

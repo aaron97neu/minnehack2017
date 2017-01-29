@@ -100,11 +100,8 @@ public class GrandmaDownSpeechlet implements Speechlet
 	{
 		SpeechOutput output = new SpeechOutput();
 		output.text("Welcome to your personal healthcare provider");
-		
-		SpeechOutput reprompt = new SpeechOutput();
-		reprompt.text("Error occured");
 
-        return intentHandler.newAskResponse(output.toString(), reprompt.toString());
+        return intentHandler.newTellResponse(output.toString());
     }
 
 }
