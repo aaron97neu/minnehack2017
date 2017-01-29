@@ -4,8 +4,7 @@
 		"intent": "AddPill",
 		"slots": [
 		{
-			"name": "Name",
-			"type": "LIST_OF_NAMES"
+			"name": "Name"
 		},
 		{
 			"name": "Dosage"
@@ -13,7 +12,13 @@
 		]
 	},
 	{
-		"intent": "TakePills"
+    "intent": "TakePills",
+    "slots": [
+      {
+        "name": "Name",
+        "type": "LIST_OF_NAMES"
+      }
+    ]
 	},
 	{
 		"intent": "PillsTaken"
