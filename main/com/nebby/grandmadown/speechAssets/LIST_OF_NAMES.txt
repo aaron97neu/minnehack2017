@@ -1,3 +1,6 @@
 Oxycodon
 Hydrocodon
 Ibuprofen
+Advil
+Morphin
+Adderall
