@@ -13,6 +13,7 @@ public class IntentHandler
 		SpeechOutput output = new SpeechOutput();
 		output.text("Okay, I will add it to your list of medication");
 
+
 		SpeechOutput reprompt = new SpeechOutput();
 		reprompt.text("What time everyday should you take it");
 
@@ -27,6 +28,7 @@ public class IntentHandler
 	{
 		SpeechOutput output = new SpeechOutput();
 		output.text("Glad to hear!");
+
 
 		SpeechOutput reprompt = new SpeechOutput();
 		reprompt.text("You need to take your medication now");
