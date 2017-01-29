@@ -81,6 +81,10 @@ public class GrandmaDownSpeechlet implements Speechlet
 		{
 			return intentHandler.pillsTaken(intent, session);
 		}
+		else if(intent.getName().equals("Clear"))
+		{
+			return intentHandler.pillsTaken(intent, session);
+		}
 		else if ("AMAZON.StopIntent".equals(intent.getName())) 
 		{
 			PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
