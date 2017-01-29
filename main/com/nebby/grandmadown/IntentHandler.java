@@ -67,7 +67,7 @@ public class IntentHandler
 			HttpResponse res = client.execute(request);
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
 			
-			output.text("Ok, adding " + response + " to your pill list. I will do my best to remind you!");
+			output.text("Ok, adding " + pill.getName() + " to your pill list. I will do my best to remind you!");
 		}
 		catch(Exception e)
 		{
@@ -84,7 +84,7 @@ public class IntentHandler
 		
 		try
 		{
-			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/takePills";
+			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/takePill";
 
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpPost request = new HttpPost(url);
