@@ -28,23 +28,6 @@ public class GrandmaDownSpeechlet implements Speechlet
 	{
 		intentHandler = new IntentHandler();
 		System.out.println("started session");
-		/*
-		System.out.println("ESTABLISHING");
-		try
-		{
-			network.connect("ec2-54-172-226-18.compute-1.amazonaws.com", 8080);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-			System.out.println("FAILED!");
-		}
-
-		System.out.println("CONNECTED");
-		network.update();
-		network.validate(true);
-		System.out.println("SECURED");
-		 */
 	}
 
 	@Override
@@ -83,7 +66,11 @@ public class GrandmaDownSpeechlet implements Speechlet
 		}
 		else if(intent.getName().equals("Clear"))
 		{
-			return intentHandler.pillsTaken(intent, session);
+			return intentHandler.clear(intent, session);
+		}
+		else if(intent.getName().equals("Checkup"))
+		{
+			return intentHandler.checkup(intent, session);
 		}
 		else if ("AMAZON.StopIntent".equals(intent.getName())) 
 		{

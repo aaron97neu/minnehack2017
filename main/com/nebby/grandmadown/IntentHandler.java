@@ -67,7 +67,7 @@ public class IntentHandler
 			HttpResponse res = client.execute(request);
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
 			
-			output.text("Ok, adding " + pill.getName() + " to your pill list. I will do my best to remind you!");
+			output.text("Ok, adding " + pill.getName() + " at " + pill.getTime() + " to your pill list. I will do my best to remind you!");
 		}
 		catch(Exception e)
 		{
@@ -152,11 +152,11 @@ public class IntentHandler
 		return newTellResponse(output.toString());
 	}
 
-	public SpeachletResponse checkup(Intent intent, Session session) {
+	public SpeechletResponse checkup(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
 		try
 		{
-			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/clear";
+			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/checkup";
 
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpGet request = new HttpGet(url);
@@ -164,7 +164,7 @@ public class IntentHandler
 
 			HttpResponse res = client.execute(request);
 
-			output.text("Checkup Started!");
+			output.text("Checkup is located on Console!");
 		}
 		catch(Exception e)
 		{
