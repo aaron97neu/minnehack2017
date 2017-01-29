@@ -109,7 +109,7 @@
 	<build>
 		<resources>
 			<resource>
-				<directory>src</directory>
+				<directory>main</directory>
 			</resource>
 		</resources>
 		<pluginManagement>
