@@ -26,7 +26,7 @@ public class IntentHandler
 		output.text("Glad to hear!");
 
 		SpeechOutput reprompt = new SpeechOutput();
-		output.text("This is the take Pill reprompt");
+		output.text("You need to take your medication now");
 
 		return newAskResponse(output.toString(), reprompt.toString());
 	}
