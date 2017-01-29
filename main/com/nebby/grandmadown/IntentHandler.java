@@ -98,7 +98,7 @@ public class IntentHandler
 			HttpResponse res = client.execute(request);
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
 			
-			output.text("Glad to hear, remember that you'll need to take it again at " + response);
+			output.text("Glad to hear, remember that you'll need to take it again tomorrow at " + response);
 		}
 		catch(Exception e)
 		{
@@ -187,7 +187,7 @@ public class IntentHandler
 
 
 			HttpResponse res = client.execute(request);
-			output.text("Checking up on " + intent.getSlot("Person"));
+			output.text("Checking up on " + intent.getSlot("Person").getValue());
 		}
 		catch(Exception e)
 		{
