@@ -1,6 +1,13 @@
 package com.nebby.grandmadown;
 
 import com.amazon.speech.slu.Intent;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
+
 import com.amazon.speech.speechlet.Session;
 import com.amazon.speech.speechlet.SpeechletResponse;
 import com.amazon.speech.ui.Reprompt;
@@ -30,7 +37,24 @@ public class IntentHandler
 
 	public SpeechletResponse timePill(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
-		output.text("I will do my best to remind you");
+
+		try
+		{
+			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/addPill";
+
+			HttpClient client = HttpClientBuilder.create().build();
+			HttpGet request = new HttpGet(url);
+
+
+			HttpResponse res = client.execute(request);
+			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
+			
+			output.text("Ok, adding " + response + " to your pill list. I will do my best to remind you!");
+		}
+		catch(Exception e)
+		{
+			output.text("I'm sorry, I couldn't get your information to the cloud.");
+		}
 
 		return newTellResponse(output.toString());
 	}
@@ -39,11 +63,24 @@ public class IntentHandler
 	{
 
 		SpeechOutput output = new SpeechOutput();
-		output.text("Glad to hear!");
+		
+		try
+		{
+			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/takePills";
+
+			HttpClient client = HttpClientBuilder.create().build();
+			HttpGet request = new HttpGet(url);
 
 
-		SpeechOutput reprompt = new SpeechOutput();
-		reprompt.text("You need to take your medication now");
+			HttpResponse res = client.execute(request);
+			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
+			
+			output.text("Glad to hear, remember that you'll need to take it again in " + response);
+		}
+		catch(Exception e)
+		{
+			output.text("I'm sorry, I couldn't get your information to the cloud. Please repeat.");
+		}
 
 		return newTellResponse(output.toString());
 
@@ -52,10 +89,27 @@ public class IntentHandler
 	public SpeechletResponse pillsTaken(Intent intent, Session session)
 	{
 		SpeechOutput output = new SpeechOutput();
-		output.text("You have not taken your pills today");
+		
+		try
+		{
+			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/pillsTaken";
 
-		SpeechOutput reprompt = new SpeechOutput();
-		reprompt.text("You need to take your medication now");
+			HttpClient client = HttpClientBuilder.create().build();
+			HttpGet request = new HttpGet(url);
+
+
+			HttpResponse res = client.execute(request);
+			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
+			
+			if(response.length() > 0)
+				output.text("You have taken " + response);
+			else
+				output.text("You have taken no pills today.");
+		}
+		catch(Exception e)
+		{
+			output.text("I'm sorry, I couldn't get your information to the cloud.");
+		}
 
 		return newTellResponse(output.toString());
 	}
@@ -82,5 +136,5 @@ public class IntentHandler
 
 		return SpeechletResponse.newAskResponse(outputSpeech, r);
 	}
-	
+
 }
