@@ -186,6 +186,7 @@ public class IntentHandler
 
 			HttpResponse res = client.execute(request);
 
+
 			output.text("Checkup is located on Console!");
 		}
 		catch(Exception e)

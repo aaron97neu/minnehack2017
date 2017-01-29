@@ -40,7 +40,7 @@ PillsTaken List out the pills left
 PillsTaken List my pills
 TakePills took my pill
 TakePills took pill
-TakePills took med
+TakePills took meds
 TakePills took pills
 TakePills took meds
 TakePills took medicine
