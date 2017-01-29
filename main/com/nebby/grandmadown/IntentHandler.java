@@ -3,12 +3,14 @@ package com.nebby.grandmadown;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.internet.ContentType;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -64,7 +66,7 @@ public class IntentHandler
 			List<NameValuePair> params = new ArrayList<NameValuePair>(2);
 			params.add(new BasicNameValuePair("name", pill.getName()));
 			params.add(new BasicNameValuePair("time", pill.getTime()));
-			request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+			request.setEntity(new StringEntity(pill.getName() + ":" + pill.getTime(), "UTF-8"));
 			
 			HttpResponse res = client.execute(request);
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
@@ -96,7 +98,7 @@ public class IntentHandler
 			HttpResponse res = client.execute(request);
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
 			
-			output.text("Glad to hear, remember that you'll need to take it again in 1 minute");
+			output.text("Glad to hear, remember that you'll need to take it again at " + response);
 		}
 		catch(Exception e)
 		{
@@ -143,7 +145,7 @@ public class IntentHandler
 				output.text("You still need to take " + response);
 			}
 			else
-				output.text("You have taken all the pills today.");
+				output.text("You have taken all your pills so far.");
 		}
 		catch(Exception e)
 		{
@@ -186,7 +188,7 @@ public class IntentHandler
 
 			HttpResponse res = client.execute(request);
 
-			output.text("Checkup is located on Console!");
+			output.text("Checking up on " + intent.getSlot("Person"));
 		}
 		catch(Exception e)
 		{
