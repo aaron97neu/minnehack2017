@@ -1,5 +1,6 @@
 package com.nebby.grandmadown;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,8 +29,11 @@ public class GrandmaDownSpeechlet implements Speechlet
 	{
 		intentHandler = new IntentHandler();
 		System.out.println("started session");
-		/*
+		
 		network = new ClientNetwork();
+		
+		/*
+		System.out.println("ESTABLISHING");
 		try
 		{
 			network.connect("ec2-54-172-226-18.compute-1.amazonaws.com", 8080);
@@ -37,12 +41,14 @@ public class GrandmaDownSpeechlet implements Speechlet
 		catch (IOException e)
 		{
 			e.printStackTrace();
+			System.out.println("FAILED!");
 		}
 		
 		System.out.println("CONNECTED");
 		network.update();
 		network.validate(true);
-		System.out.println("SECURED");*/
+		System.out.println("SECURED");
+		 */
 	}
 
 	@Override
@@ -58,9 +64,18 @@ public class GrandmaDownSpeechlet implements Speechlet
 	{
 		Intent intent = request.getIntent();
 		System.out.println(intent.getName());
+		
 		if(intent.getName().equals("AddPill"))
 		{
 			return intentHandler.addPill(intent, session);
+		}
+		else if(intent.getName().equals("NamePill"))
+		{
+			return intentHandler.namePill(intent, session);
+		}
+		else if(intent.getName().equals("TimePill"))
+		{
+			return intentHandler.timePill(intent, session);
 		}
 		else if(intent.getName().equals("TakePills"))
 		{
