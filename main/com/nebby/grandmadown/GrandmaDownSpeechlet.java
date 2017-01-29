@@ -5,6 +5,12 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+
 import com.amazon.speech.slu.Intent;
 import com.amazon.speech.speechlet.IntentRequest;
 import com.amazon.speech.speechlet.LaunchRequest;
@@ -19,19 +25,16 @@ import com.nebby.grandmadown.network.ClientNetwork;
 
 public class GrandmaDownSpeechlet implements Speechlet 
 {
-	
+
 	private Map<String, Method> intentCaller = new HashMap<String, Method>();
 	private IntentHandler intentHandler = null;
 	private ClientNetwork network = null;
-	
+
 	@Override
 	public void onSessionStarted(SessionStartedRequest request, Session session) throws SpeechletException 
 	{
 		intentHandler = new IntentHandler();
 		System.out.println("started session");
-		
-		network = new ClientNetwork();
-		
 		/*
 		System.out.println("ESTABLISHING");
 		try
@@ -43,7 +46,7 @@ public class GrandmaDownSpeechlet implements Speechlet
 			e.printStackTrace();
 			System.out.println("FAILED!");
 		}
-		
+
 		System.out.println("CONNECTED");
 		network.update();
 		network.validate(true);
@@ -56,15 +59,15 @@ public class GrandmaDownSpeechlet implements Speechlet
 	{
 		System.out.println("Launched");
 
-        return getWelcomeResponse();
+		return getWelcomeResponse();
 	}
-	
+
 	@Override
 	public SpeechletResponse onIntent(IntentRequest request, Session session) throws SpeechletException
 	{
 		Intent intent = request.getIntent();
 		System.out.println(intent.getName());
-		
+
 		if(intent.getName().equals("AddPill"))
 		{
 			return intentHandler.addPill(intent, session);
@@ -87,22 +90,22 @@ public class GrandmaDownSpeechlet implements Speechlet
 		}
 		else if ("AMAZON.StopIntent".equals(intent.getName())) 
 		{
-            PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
-            outputSpeech.setText("Goodbye");
+			PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
+			outputSpeech.setText("Goodbye");
 
-            return SpeechletResponse.newTellResponse(outputSpeech);
-        }
+			return SpeechletResponse.newTellResponse(outputSpeech);
+		}
 		else if ("AMAZON.CancelIntent".equals(intent.getName()))
 		{
-            PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
-            outputSpeech.setText("Goodbye");
+			PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
+			outputSpeech.setText("Goodbye");
 
-            return SpeechletResponse.newTellResponse(outputSpeech);
-        }
-        else
-        {
-            throw new SpeechletException("Invalid Intent");
-        }
+			return SpeechletResponse.newTellResponse(outputSpeech);
+		}
+		else
+		{
+			throw new SpeechletException("Invalid Intent");
+		}
 	}
 
 	@Override
@@ -110,16 +113,16 @@ public class GrandmaDownSpeechlet implements Speechlet
 	{
 		System.out.println("ended");
 	}
-	
+
 	private SpeechletResponse getWelcomeResponse() 
 	{
 		SpeechOutput output = new SpeechOutput();
 		output.text("Welcome to your personal healthcare provider");
-		
+
 		SpeechOutput reprompt = new SpeechOutput();
 		reprompt.text("Error occured");
 
-        return intentHandler.newAskResponse(output.toString(), reprompt.toString());
-    }
+		return intentHandler.newAskResponse(output.toString(), reprompt.toString());
+	}
 
 }
