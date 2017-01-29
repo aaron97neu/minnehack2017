@@ -9,9 +9,9 @@ import com.amazon.speech.ui.SsmlOutputSpeech;
 public class IntentHandler 
 {
 
-	public void pillRequest(Intent intent, Session session)
+	public SpeechletResponse addPill(Intent intent, Session session)
 	{
-
+		return null;
 	}
 
 	public SpeechletResponse newAskResponse(String output, String reprompt)
@@ -29,5 +29,5 @@ public class IntentHandler
 		
 		return SpeechletResponse.newAskResponse(outputSpeech, r);
 	}
-
+	
 }
