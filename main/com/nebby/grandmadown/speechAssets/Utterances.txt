@@ -29,18 +29,18 @@ TimePill at {Time}
 TimePill by {Time}
 TimePill before {Time}
 TakePills I have taken a pill
-PillsTaken I have taken all the pills that I need to take
-PillsTaken What have I taken
+PillsTaken What pills are left
+PillsTaken What meds are left
 PillsTaken What pills have I taken
-PillsTaken Did I take my pills
-PillsTaken Did I take pills
-PillsTaken Did I take my meds
-PillsTaken Did I take my medicine
-PillsTaken Did I take my drugs
-PillsTaken Did I take my prescription
+PillsTaken Did I take all of my pills
+PillsTaken Are there any pills left for today
+PillsTaken What pills have I not taken
+PillsTaken List out my pills
+PillsTaken List out the pills left
+PillsTaken List my pills
 TakePills took my pill
 TakePills took pill
-TakePills took meds
+TakePills took med
 TakePills took pills
 TakePills took meds
 TakePills took medicine
