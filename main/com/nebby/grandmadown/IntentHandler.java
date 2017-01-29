@@ -7,11 +7,14 @@ import com.amazon.speech.ui.Reprompt;
 import com.amazon.speech.ui.SsmlOutputSpeech;
 
 public class IntentHandler 
-{  
+{
+	private Medication pill;
+
 	public SpeechletResponse addPill(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
 		output.text("Okay, I will add it to your list of medication. What type of medication is it");
-		
+		pill = new Medication();
+
 		SpeechOutput reprompt = new SpeechOutput();
 		reprompt.text("What type of medication is it");
 
@@ -21,6 +24,10 @@ public class IntentHandler
 	public SpeechletResponse namePill(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
 		output.text("Okay, I've update your medication list. What time would you like to take it");
+		if (pill == null) {
+			pill = new Medication();
+		}
+		pill.setName(intent.getSlot("Name").getValue());
 
 		SpeechOutput reprompt = new SpeechOutput();
 		reprompt.text("What time would you like to take it");
@@ -31,6 +38,7 @@ public class IntentHandler
 	public SpeechletResponse timePill(Intent intent, Session session) {
 		SpeechOutput output = new SpeechOutput();
 		output.text("I will do my best to remind you");
+		pill.setTime(intent.getSlot("Time").getValue());
 
 		return newTellResponse(output.toString());
 	}

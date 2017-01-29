@@ -5,11 +5,11 @@ import java.util.Date;
 public class Medication {
 
 		private String name;
-		private Date date;
+		private String time;
 		
-		public Medication(String n, Date time) {
-			name = n;
-			date = time;			
+		public Medication() {
+			name = null;
+			time= null;
 		}
 
 		public String getName() {
@@ -20,12 +20,12 @@ public class Medication {
 			this.name = name;
 		}
 
-		public Date getDate() {
-			return date;
+		public String getTime() {
+			return time;
 		}
 
-		public void setDate(Date date) {
-			this.date = date;
+		public void setTime(String date) {
+			this.time = date;
 		}
 		
 }
