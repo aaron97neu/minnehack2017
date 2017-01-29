@@ -54,7 +54,7 @@ public class GrandmaDownSpeechlet implements Speechlet
 		catch (IOException | NoSuchMethodException | SecurityException e)
 		{
 			e.printStackTrace();
-		}
+		}*/
 		
 		network = new ClientNetwork();
 		try
@@ -64,7 +64,10 @@ public class GrandmaDownSpeechlet implements Speechlet
 		catch (IOException e)
 		{
 			e.printStackTrace();
-		}*/
+		}
+		
+		network.update();
+		network.validate(true);
 	}
 
 	@Override
