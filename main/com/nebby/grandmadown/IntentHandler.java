@@ -15,7 +15,7 @@ public class IntentHandler
 		output.text("Okay, I will add it to your list of medication");
 		
 		SpeechOutput reprompt = new SpeechOutput();
-		output.text("Did you have any other new medications?");
+		reprompt.text("What is the name of the medication?");
 		
 		return newAskResponse(output.toString(), reprompt.toString());
 	}
@@ -26,7 +26,7 @@ public class IntentHandler
 		output.text("Glad to hear!");
 
 		SpeechOutput reprompt = new SpeechOutput();
-		output.text("You need to take your medication now");
+		reprompt.text("You need to take your medication now");
 
 		return newAskResponse(output.toString(), reprompt.toString());
 	}
@@ -34,10 +34,10 @@ public class IntentHandler
 	public SpeechletResponse pillsTaken(Intent intent, Session session)
 	{
 		SpeechOutput output = new SpeechOutput();
-		output.text("This is the pills taken output");
+		output.text("You have not taken your pills today");
 
 		SpeechOutput reprompt = new SpeechOutput();
-		output.text("This is the pills taken reprompt");
+		reprompt.text("You need to take your medication now");
 
 		return newAskResponse(output.toString(), reprompt.toString());
 	}

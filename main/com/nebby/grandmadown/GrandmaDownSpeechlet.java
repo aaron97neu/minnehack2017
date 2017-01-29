@@ -114,7 +114,7 @@ public class GrandmaDownSpeechlet implements Speechlet
 	private SpeechletResponse getWelcomeResponse() 
 	{
 		SpeechOutput output = new SpeechOutput();
-		output.text("This is a text!");
+		output.text("Welcome to your personal healthcare provider");
 		
 		SpeechOutput reprompt = new SpeechOutput();
 		reprompt.text("Please do something...");
