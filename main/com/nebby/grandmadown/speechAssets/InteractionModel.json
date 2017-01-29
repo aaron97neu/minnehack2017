@@ -11,11 +11,7 @@
           "name": "Time",
           "type": "AMAZON.TIME"
         }
-      ],
-      "outputSpeech": {
-        "type": "SSML",
-        "ssml": "<speak>I added the medication</speak>"
-      }
+      ]
 	},
 	{
     "intent": "TakePills"
