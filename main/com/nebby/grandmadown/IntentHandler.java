@@ -67,7 +67,7 @@ public class IntentHandler
 			HttpResponse res = client.execute(request);
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
 			
-			output.text("Ok, adding " + pill.getName() + " to your pill list. I will do my best to remind you!");
+			output.text("Ok, adding " + pill.getName() + " at " + pill.getTime() + " to your pill list. I will do my best to remind you!");
 		}
 		catch(Exception e)
 		{
@@ -164,7 +164,7 @@ public class IntentHandler
 
 			HttpResponse res = client.execute(request);
 
-			output.text("Checkup Started!");
+			output.text("Checkup is located on Console!");
 		}
 		catch(Exception e)
 		{
