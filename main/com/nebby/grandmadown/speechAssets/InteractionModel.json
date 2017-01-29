@@ -14,10 +14,30 @@
       ]
 	},
 	{
-    "intent": "TakePills"
+    "intent": "TakePills",
+      "slots": [
+        {
+          "name": "Name",
+          "type": "LIST_OF_NAMES"
+        },
+        {
+          "name": "Time",
+          "type": "AMAZON.TIME"
+        }
+      ]
 	},
     {
-      "intent": "PillsTaken"
+      "intent": "PillsTaken",
+      "slots": [
+        {
+          "name": "Name",
+          "type": "LIST_OF_NAMES"
+        },
+        {
+          "name": "Time",
+          "type": "AMAZON.TIME"
+        }
+      ]
     },
     {
       "intent": "AMAZON.HelpIntent"

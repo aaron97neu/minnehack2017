@@ -1,9 +1,5 @@
 package com.nebby.grandmadown;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,8 +30,9 @@ public class GrandmaDownSpeechlet implements Speechlet
 	public void onSessionStarted(SessionStartedRequest request, Session session) throws SpeechletException 
 	{
 		intentHandler = new IntentHandler();
-		log.info("onSessionStarted requestId={}, sessionId={}", request.getRequestId(),
+		log.error("onSessionStarted requestId={}, sessionId={}", request.getRequestId(),
                 session.getSessionId());
+		System.out.println("this");
 		/*try 
 		{
 			BufferedReader reader = new BufferedReader(new FileReader("com/nebby/grandmadown/speechAssets/IntentFunctions.txt"));
@@ -73,7 +70,7 @@ public class GrandmaDownSpeechlet implements Speechlet
 	@Override
 	public SpeechletResponse onLaunch(LaunchRequest request, Session session) throws SpeechletException
 	{
-		log.info("onLaunch requestId={}, sessionId={}", request.getRequestId(),
+		log.error("onLaunch requestId={}, sessionId={}", request.getRequestId(),
                 session.getSessionId());
 
         return getWelcomeResponse();
@@ -110,7 +107,7 @@ public class GrandmaDownSpeechlet implements Speechlet
 	@Override
 	public void onSessionEnded(SessionEndedRequest request, Session session) throws SpeechletException
 	{
-		log.info("onSessionEnded requestId={}, sessionId={}", request.getRequestId(),
+		log.error("onSessionEnded requestId={}, sessionId={}", request.getRequestId(),
                 session.getSessionId());
 	}
 	
