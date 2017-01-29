@@ -20,12 +20,13 @@ public class IntentHandler
 		if (intent.getSlot("Name").getValue() == null) {
 			reprompt.text("What is the name of the medication");
 		}
-		
-		return newAskResponse(output.toString(), reprompt.toString());
+
+		return newTellResponse(output.toString());//, reprompt.toString());
 	}
 
 	public SpeechletResponse takePills(Intent intent, Session session)
 	{
+
 		SpeechOutput output = new SpeechOutput();
 		output.text("Glad to hear!");
 
@@ -33,7 +34,8 @@ public class IntentHandler
 		SpeechOutput reprompt = new SpeechOutput();
 		reprompt.text("You need to take your medication now");
 
-		return newAskResponse(output.toString(), reprompt.toString());
+		return newTellResponse(output.toString());//, reprompt.toString());
+
 	}
 
 	public SpeechletResponse pillsTaken(Intent intent, Session session)
@@ -44,7 +46,14 @@ public class IntentHandler
 		SpeechOutput reprompt = new SpeechOutput();
 		reprompt.text("You need to take your medication now");
 
-		return newAskResponse(output.toString(), reprompt.toString());
+		return newTellResponse(output.toString());//, reprompt.toString());
+	}
+
+	public SpeechletResponse newTellResponse(String output) {
+		SsmlOutputSpeech outputSpeech = new SsmlOutputSpeech();
+		outputSpeech.setSsml(output);
+
+		return SpeechletResponse.newTellResponse(outputSpeech);
 	}
 
 	public SpeechletResponse newAskResponse(String output, String reprompt)
@@ -59,7 +68,7 @@ public class IntentHandler
 
 		Reprompt r = new Reprompt();
 		r.setOutputSpeech(repromptOutputSpeech);
-		
+
 		return SpeechletResponse.newAskResponse(outputSpeech, r);
 	}
 	
