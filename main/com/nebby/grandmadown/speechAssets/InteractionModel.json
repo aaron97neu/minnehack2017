@@ -1,7 +1,21 @@
 {
 	"intents": [
 	{
-    "intent": "AddPill"
+    "intent": "AddPill",
+      "slots": [
+        {
+          "name": "Name",
+          "type": "LIST_OF_NAMES"
+        },
+        {
+          "name": "Time",
+          "type": "AMAZON.TIME"
+        }
+      ],
+      "outputSpeech": {
+        "type": "SSML",
+        "ssml": "<speak>I added the medication</speak>"
+      }
 	},
 	{
     "intent": "TakePills"

@@ -19,6 +19,47 @@ AddPill have a pill
 AddPill have new meds
 AddPill have new medicine
 AddPill have a new drug
+AddPill add a new prescription
+AddPill add a prescription
+AddPill add a new pill
+AddPill add a pill
+AddPill add new meds
+AddPill add new medicine
+AddPill add a new drug
+AddPill got a new prescription
+AddPill got a prescription
+AddPill got a new pill
+AddPill got a pill
+AddPill got new meds
+AddPill got new medicine
+AddPill got a new drug
+AddPill have a new prescription
+AddPill have a prescription
+AddPill have a new pill
+AddPill have a pill
+AddPill have new meds
+AddPill have new medicine
+AddPill have a new drug
+AddPill add a pill called {Name}
+AddPill add a prescription called {Name}
+AddPill add a medicine called {Name}
+AddPill add a drug called {Name}
+AddPill add a med called {Name}
+AddPill add {Name}
+AddPill new pill it's {Name}
+AddPill new med it's {Name}
+AddPill new drug it's {Name}
+AddPill new prescription it's {Name}
+AddPill new pill it is {Name}
+AddPill new med it is {Name}
+AddPill new drug it is {Name}
+AddPill new prescription it is {Name}
+AddPill the dosage of {Name} is {Time}
+AddPill take {Name} at {Time}
+AddPill take {Name} by {Time}
+AddPill take my pills by {Time}
+AddPill take it by {Time}
+AddPill take it at {Time}
 PillsTaken What have I taken
 PillsTaken What pills have I taken
 PillsTaken Did I take my pills
@@ -27,9 +68,9 @@ PillsTaken Did I take my meds
 PillsTaken Did I take my medicine
 PillsTaken Did I take my drugs
 PillsTaken Did I take my prescription
-TakePills took my pill {Name}
-TakePills took pill {Name}
-TakePills took meds {Name}
+TakePills took my pill
+TakePills took pill
+TakePills took meds
 TakePills took pills
 TakePills took meds
 TakePills took medicine
