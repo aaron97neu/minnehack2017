@@ -1,22 +1,10 @@
 {
 	"intents": [
 	{
-    "intent": "AddPill",
-    "slots": [
-      {
-        "name": "Name",
-        "type": "LIST_OF_NAMES"
-      }
-    ]
+    "intent": "AddPill"
 	},
 	{
-    "intent": "TakePills",
-    "slots": [
-      {
-        "name": "Name",
-        "type": "LIST_OF_NAMES"
-      }
-    ]
+    "intent": "TakePills"
 	},
     {
       "intent": "PillsTaken"
