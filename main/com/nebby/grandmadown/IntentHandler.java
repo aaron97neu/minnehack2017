@@ -21,7 +21,7 @@ public class IntentHandler
 			reprompt.text("What is the name of the medication");
 		}
 
-		return newTellResponse(output.toString());//, reprompt.toString());
+		return newAskResponse(output.toString(), reprompt.toString());//, reprompt.toString());
 	}
 
 	public SpeechletResponse takePills(Intent intent, Session session)

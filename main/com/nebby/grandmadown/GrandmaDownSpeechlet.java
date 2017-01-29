@@ -57,7 +57,6 @@ public class GrandmaDownSpeechlet implements Speechlet
 	public SpeechletResponse onIntent(IntentRequest request, Session session) throws SpeechletException
 	{
 		Intent intent = request.getIntent();
-		
 		System.out.println(intent.getName());
 		if(intent.getName().equals("AddPill"))
 		{
