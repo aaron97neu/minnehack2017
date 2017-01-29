@@ -56,11 +56,11 @@ public class GrandmaDownSpeechlet implements Speechlet
 		{
 			return intentHandler.timePill(intent, session);
 		}
-		else if(intent.getName().equals("TakePills"))
+		else if(intent.getName().equalsIgnoreCase("TakePills"))
 		{
 			return intentHandler.takePills(intent, session);
 		}
-		else if(intent.getName().equals("PillsTaken"))
+		else if(intent.getName().equalsIgnoreCase("PillsTaken"))
 		{
 			return intentHandler.pillsTaken(intent, session);
 		}

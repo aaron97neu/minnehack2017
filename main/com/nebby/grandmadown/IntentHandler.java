@@ -49,6 +49,8 @@ public class IntentHandler
 	}
 
 	public SpeechletResponse timePill(Intent intent, Session session) {
+		if(pill == null)
+			return newTellResponse("<speak></speak>");
 		SpeechOutput output = new SpeechOutput();
 		pill.setTime(intent.getSlot("Time").getValue());
 		
@@ -74,6 +76,8 @@ public class IntentHandler
 			output.text("I'm sorry, I couldn't get your information to the cloud.");
 		}
 
+		pill = null;
+		
 		return newTellResponse(output.toString());
 	}
 
@@ -97,6 +101,23 @@ public class IntentHandler
 		catch(Exception e)
 		{
 			output.text("I'm sorry, I couldn't get your information to the cloud. Please repeat.");
+		}
+		
+		SpeechOutput output = new SpeechOutput();
+		try
+		{
+			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/clear";
+
+			HttpClient client = HttpClientBuilder.create().build();
+			HttpPost request = new HttpPost(url);
+
+			HttpResponse res = client.execute(request);
+			
+			//output.text("Cleared");
+		}
+		catch(Exception e)
+		{
+			//output.text("I'm sorry, I couldn't get your information to the cloud.");
 		}
 
 		return newTellResponse(output.toString());
