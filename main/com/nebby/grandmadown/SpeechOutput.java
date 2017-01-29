@@ -3,11 +3,11 @@ package com.nebby.grandmadown;
 public class SpeechOutput 
 {
 	
-	
+	private StringBuilder speechOutput;
 	
 	public SpeechOutput()
 	{
-		
+		speechOutput = new StringBuilder();
 	}
 	
 	public void text(String text)
@@ -45,6 +45,11 @@ public class SpeechOutput
 		
 	}
 	
+	public String toString()
+	{
+		return "<speak>" + speechOutput.toString() + "</speech>";
+	}
+	
 	public static enum Strength
 	{
 		NONE("none"), VERY_WEAK("x-weak"), WEAK("weak"), MEDIUM("medium"), STRONG("strong"), VERY_STRONG("x-strong");
@@ -59,7 +64,9 @@ public class SpeechOutput
 
 	public static enum Interpret
 	{
-		SPELT("characters"), NUMBER("cardinal");
+		SPELT("characters"), NUMBER("cardinal"), ORDINAL("ordinal"), DIGITS("digits"), 
+		FRACTION("fraction"), UNIT("unit"), TIME("time"), TELEPHONE("telephone"),
+		ADDRESS("address");
 		
 		private final String content;
 		
