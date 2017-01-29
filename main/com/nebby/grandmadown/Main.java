@@ -12,7 +12,7 @@ public class Main
 		ClientNetwork network = new ClientNetwork();
 		try
 		{
-			network.connect("localhost", 8080);
+			network.connect("ec2-54-172-226-18.compute-1.amazonaws.com", 8888);
 		}
 		catch (IOException e)
 		{
@@ -20,7 +20,7 @@ public class Main
 		}
 		
 		network.update();
-		
+		System.out.println("VALIDATING!");
 		network.validate(true);
 		System.out.println("SECURED!");
 	}
