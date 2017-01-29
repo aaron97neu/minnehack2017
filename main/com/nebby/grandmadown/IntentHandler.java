@@ -92,7 +92,7 @@ public class IntentHandler
 			HttpResponse res = client.execute(request);
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
 			
-			output.text("Glad to hear, remember that you'll need to take it again in " + response);
+			output.text("Glad to hear, remember that you'll need to take it again in 1 minute");
 		}
 		catch(Exception e)
 		{
