@@ -1,13 +1,19 @@
 package com.nebby.grandmadown;
 
-import com.amazon.speech.slu.Intent;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import com.amazon.speech.slu.Intent;
 import com.amazon.speech.speechlet.Session;
 import com.amazon.speech.speechlet.SpeechletResponse;
 import com.amazon.speech.ui.Reprompt;
@@ -51,9 +57,13 @@ public class IntentHandler
 			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/addPill";
 
 			HttpClient client = HttpClientBuilder.create().build();
-			HttpGet request = new HttpGet(url);
+			HttpPost request = new HttpPost(url);
 
-
+			List<NameValuePair> params = new ArrayList<NameValuePair>(2);
+			params.add(new BasicNameValuePair("name", pill.getName()));
+			params.add(new BasicNameValuePair("time", pill.getTime()));
+			request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+			
 			HttpResponse res = client.execute(request);
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
 			
@@ -77,8 +87,7 @@ public class IntentHandler
 			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/takePills";
 
 			HttpClient client = HttpClientBuilder.create().build();
-			HttpGet request = new HttpGet(url);
-
+			HttpPost request = new HttpPost(url);
 
 			HttpResponse res = client.execute(request);
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
@@ -110,7 +119,7 @@ public class IntentHandler
 			String response = EntityUtils.toString(res.getEntity(), "UTF-8");
 			
 			if(response.length() > 0)
-				output.text("You have taken " + response);
+				output.text(response);
 			else
 				output.text("You have taken no pills today.");
 		}
@@ -130,8 +139,7 @@ public class IntentHandler
 			String url = "http://ec2-54-172-226-18.compute-1.amazonaws.com:8888/clear";
 
 			HttpClient client = HttpClientBuilder.create().build();
-			HttpGet request = new HttpGet(url);
-
+			HttpPost request = new HttpPost(url);
 
 			HttpResponse res = client.execute(request);
 			
