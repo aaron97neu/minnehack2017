@@ -12,11 +12,33 @@ public class IntentHandler
 	public SpeechletResponse addPill(Intent intent, Session session)
 	{
 		SpeechOutput output = new SpeechOutput();
-		output.text("This is the add Pill output");
+		output.text("Okay, I will add it to your list of medication");
 		
 		SpeechOutput reprompt = new SpeechOutput();
-		output.text("This is the add Pill reprompt");
+		output.text("Did you have any other new medications?");
 		
+		return newAskResponse(output.toString(), reprompt.toString());
+	}
+
+	public SpeechletResponse takePills(Intent intent, Session session)
+	{
+		SpeechOutput output = new SpeechOutput();
+		output.text("Glad to hear!");
+
+		SpeechOutput reprompt = new SpeechOutput();
+		output.text("This is the take Pill reprompt");
+
+		return newAskResponse(output.toString(), reprompt.toString());
+	}
+
+	public SpeechletResponse pillsTaken(Intent intent, Session session)
+	{
+		SpeechOutput output = new SpeechOutput();
+		output.text("This is the pills taken output");
+
+		SpeechOutput reprompt = new SpeechOutput();
+		output.text("This is the pills taken reprompt");
+
 		return newAskResponse(output.toString(), reprompt.toString());
 	}
 
