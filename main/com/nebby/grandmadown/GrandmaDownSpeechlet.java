@@ -8,6 +8,9 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.amazon.speech.slu.Intent;
 import com.amazon.speech.speechlet.IntentRequest;
 import com.amazon.speech.speechlet.LaunchRequest;
@@ -21,7 +24,8 @@ import com.nebby.grandmadown.network.ClientNetwork;
 
 public class GrandmaDownSpeechlet implements Speechlet 
 {
-
+	private static final Logger log = LoggerFactory.getLogger(GrandmaDownSpeechlet.class);
+	
 	private Map<String, Method> intentCaller = new HashMap<String, Method>();
 	private IntentHandler intentHandler = null;
 	private ClientNetwork network = null;
@@ -30,6 +34,8 @@ public class GrandmaDownSpeechlet implements Speechlet
 	public void onSessionStarted(SessionStartedRequest request, Session session) throws SpeechletException 
 	{
 		intentHandler = new IntentHandler();
+		log.info("onSessionStarted requestId={}, sessionId={}", request.getRequestId(),
+                session.getSessionId());
 		/*try 
 		{
 			BufferedReader reader = new BufferedReader(new FileReader("com/nebby/grandmadown/speechAssets/IntentFunctions.txt"));
@@ -64,9 +70,12 @@ public class GrandmaDownSpeechlet implements Speechlet
 	@Override
 	public SpeechletResponse onLaunch(LaunchRequest request, Session session) throws SpeechletException
 	{
-		return null;
-	}
+		log.info("onLaunch requestId={}, sessionId={}", request.getRequestId(),
+                session.getSessionId());
 
+        return getWelcomeResponse();
+	}
+	
 	@Override
 	public SpeechletResponse onIntent(IntentRequest request, Session session) throws SpeechletException
 	{
@@ -100,5 +109,16 @@ public class GrandmaDownSpeechlet implements Speechlet
 	{
 
 	}
+	
+	private SpeechletResponse getWelcomeResponse() 
+	{
+		SpeechOutput output = new SpeechOutput();
+		output.text("This is a text!");
+		
+		SpeechOutput reprompt = new SpeechOutput();
+		reprompt.text("Please do something...");
+
+        return intentHandler.newAskResponse(output.toString(), reprompt.toString());
+    }
 
 }
