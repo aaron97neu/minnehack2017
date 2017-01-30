@@ -1,3 +1,12 @@
+Alexa Skills side for the Minnehack 2017 20hr Hackathon project Grandma Down.
+
+Server git: https://github.com/Killian-LeClainche/Minnehack2017-Server/ Devpost link: https://devpost.com/software/minnehack2017
+
+
+
+
+### Sample Documention:
+
 # Java Alexa Skills Kit SDK & Samples
 
 ##Alexa Skills Kit Documentation
